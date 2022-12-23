@@ -14,3 +14,10 @@ after_success:
   - docker build -t valdrin-1986/multi-nginx ./nginx
   - docker build -t valdrin-1986/multi-server ./server
   - docker build -t valdrin-1986/multi-worker ./worker
+  ######## Login to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take thos images and push them to docker hub
+  - docker push valdrin-1986/multi-client
+  - docker push valdrin-1986/multi-nginx
+  - docker push valdrin-1986/multi-server
+  - docker push valdrin-1986/multi-worker
